@@ -33,27 +33,29 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      gap: 16px;
+      padding: 16px;
     }
     .main-image {
-      width: 100%;
-      max-height: 260px;
+      width: 220px;
+      height: 220px;
       object-fit: contain;
       background: #fafafa;
+      border-radius: 8px;
     }
     .thumbnails {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: flex;
+      flex-direction: column;
       gap: 6px;
-      padding: 10px;
     }
     .thumbnails img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+      width: 48px;
+      height: 48px;
       object-fit: cover;
       cursor: pointer;
       border-radius: 6px;
-      opacity: 0.8;
+      opacity: 0.75;
       transition: opacity 0.2s, transform 0.2s;
     }
     .thumbnails img:hover {
@@ -104,7 +106,9 @@
 
       <!-- Barcelona outfit -->
       <div class="card" data-team="barcelona">
-        <img src="images/A1.jpg" alt="FC Barcelona shirt" class="main-image" id="barca-main" />
+        <div>
+          <img src="images/A1.jpg" alt="FC Barcelona shirt" class="main-image" id="barca-main" />
+        </div>
         <div class="thumbnails">
           <img src="images/A1.jpg" onclick="setImage('barca-main', this.src)">
           <img src="images/A2.jpg" onclick="setImage('barca-main', this.src)">
