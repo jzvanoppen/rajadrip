@@ -37,8 +37,9 @@
     }
     .main-image {
       width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
+      max-height: 260px;
+      object-fit: contain;
+      background: #fafafa;
     }
     .thumbnails {
       display: grid;
@@ -71,19 +72,38 @@
       color: #666;
       font-size: 14px;
     }
+      header button {
+      margin: 5px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #111;
+      font-weight: 600;
+    }
+    header button:hover {
+      background: #ddd;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Raja drip</h1>
-    <p>Voetbal Outfits, Collectie 2026</p>
+    <h1>Mijn Voetbal Outfits</h1>
+    <p>Collectie – showroom stijl (geen verkoop)</p>
+    <nav style="margin-top:15px;">
+      <button onclick="filterTeam('all')">Alle ploegen</button>
+      <button onclick="filterTeam('barcelona')">Barcelona</button>
+      <button onclick="filterTeam('city')">Man City</button>
+      <button onclick="filterTeam('real')">Real Madrid</button>
+    </nav>
   </header>
 
   <div class="container">
     <div class="grid">
 
       <!-- Barcelona outfit -->
-      <div class="card">
+      <div class="card" data-team="barcelona">
         <img src="images/A1.jpg" alt="FC Barcelona shirt" class="main-image" id="barca-main" />
         <div class="thumbnails">
           <img src="images/A1.jpg" onclick="setImage('barca-main', this.src)">
@@ -109,6 +129,15 @@
   <script>
     function setImage(mainId, src) {
       document.getElementById(mainId).src = src;
+    }
+      function filterTeam(team) {
+      document.querySelectorAll('.card').forEach(card => {
+        if (team === 'all' || card.dataset.team === team) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     }
   </script>
 </body>
